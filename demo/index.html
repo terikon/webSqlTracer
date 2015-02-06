@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>WebSqlTracer demo</title>
+        <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+        <script src="../webSqlTracer.js"></script>
+        
+        <script>
+            //Here we start tracing
+            webSqlTracer.traceOnOpen("WebSqlTracerDemoDb");
+        </script>
+
+        <script>
+            //Here we initialize the database
+            console.log("The app: opening database");
+            var db = openDatabase('WebSqlTracerDemoDb', '1.0', 'Database for WebSqlTracer demo', 2 * 1024 * 1024);
+
+            //Here we create and fill the database
+            db.transaction(function (tx) {
+                console.log("The app: creating table");
+                tx.executeSql('CREATE TABLE foo (id unique, text)');
+
+                console.log("The app: inserting row 1");
+                tx.executeSql('INSERT INTO foo (id, text) VALUES (1, "hardcoded value")');
+
+                console.log("The app: inserting row 2");
+                tx.executeSql('INSERT INTO foo (id, text) VALUES (2, ?)', ["parametrized value"]);
+            });
+
+            //Here we selecte values from the database
+            db.transaction(function (tx) {
+                tx.executeSql('SELECT * FROM foo', [], function (tx, results) {
+                    var len = results.rows.length, i;
+                    for (i = 0; i < len; i++) {
+                        console.log("The app: selected value from db: " + results.rows.item(i).text);
+                    }
+                });
+            });
+        </script>
+        
+    </head>
+    <body>
+        <div>
+            <h1>
+                This page demonstrates 
+            </h1>
+            WebSqlTracerDemoDb database will be created and filled.
+            <br/>
+            See console (F12) for output.
+            <br/>
+            See source html for code.
+        </div>
+    </body>
+</html>

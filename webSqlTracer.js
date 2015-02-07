@@ -7,17 +7,17 @@
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
-        define(['underscore', 'jquery'], factory);
+        define(['underscore', 'jquery'], factory.bind(null, root));
 	} else if (typeof module !== "undefined" && module !== null && module.exports != null) {
         // Node module.
-        module.exports.webSqlTracer = factory(require('underscore'), require('jquery'));
+        module.exports.webSqlTracer = factory(root, require('underscore'), require('jquery'));
     } else {
         // Browser globals
-        root.webSqlTracer = factory(root._, root.jQuery);
+        root.webSqlTracer = factory(root, root._, root.jQuery);
     }
-}(global,
+}(this,
     //TODO: make it configurable to trace per table.
-    function (_, $) {
+    function (root, _, $) {
 
         var originalExecuteSql,
             originalTransaction,
@@ -43,7 +43,7 @@
                 traceOnOpenSet = true;
 
                 if (!originalOpenDatabase) {
-                    originalOpenDatabase = global.openDatabase;
+                    originalOpenDatabase = root.openDatabase;
                 }
 
                 if (_.isString(tracePredicate)) {
@@ -51,7 +51,7 @@
                     tracePredicate = function (name) { return name === tracePredicateStr; };
                 }
 
-                global.openDatabase = function (name, version) {
+                root.openDatabase = function (name, version) {
                     var db = originalOpenDatabase.apply(this, arguments);
 
                     if (tracePredicate(name)) {
@@ -73,7 +73,7 @@
 
                 traceOnOpenSet = false;
 
-                global.openDatabase = originalOpenDatabase;
+                root.openDatabase = originalOpenDatabase;
             },
 
             //Parameters:

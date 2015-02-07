@@ -8,14 +8,14 @@
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
         define(['underscore', 'jquery'], factory);
-    if (typeof module !== "undefined" && module !== null && module.exports != null) {
+	} else if (typeof module !== "undefined" && module !== null && module.exports != null) {
         // Node module.
         module.exports.webSqlTracer = factory(require('underscore'), require('jquery'));
     } else {
         // Browser globals
         root.webSqlTracer = factory(root._, root.jQuery);
     }
-}(window,
+}(global,
     //TODO: make it configurable to trace per table.
     function (_, $) {
 
@@ -43,7 +43,7 @@
                 traceOnOpenSet = true;
 
                 if (!originalOpenDatabase) {
-                    originalOpenDatabase = window.openDatabase;
+                    originalOpenDatabase = global.openDatabase;
                 }
 
                 if (_.isString(tracePredicate)) {
@@ -51,7 +51,7 @@
                     tracePredicate = function (name) { return name === tracePredicateStr; };
                 }
 
-                window.openDatabase = function (name, version) {
+                global.openDatabase = function (name, version) {
                     var db = originalOpenDatabase.apply(this, arguments);
 
                     if (tracePredicate(name)) {
@@ -73,7 +73,7 @@
 
                 traceOnOpenSet = false;
 
-                window.openDatabase = originalOpenDatabase;
+                global.openDatabase = originalOpenDatabase;
             },
 
             //Parameters:

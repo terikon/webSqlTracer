@@ -168,7 +168,11 @@ define(['webSqlTracer'], function (webSqlTracer) {
 
 # Node module
 
-webSqlTracer can also be loaded as node.js module.
+webSqlTracer can also be loaded as node.js module:
+
+```js
+var webSqlTracer = require('websqltracer');
+```
 
 # Things to consider for future versions
 

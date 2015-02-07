@@ -29,17 +29,50 @@ This will create global **webSqlTracer** object to start your tracer.
 
 # API
 
-<a name="webSqlTracer-startTrace"></a>
-[webSqlTracer.startTrace(db, dbName, dbVersion)](#webSqlTracer-startTrace) starts
-
-<a name="webSqlTracer-stopTrace"></a>
-[webSqlTracer.stopTrace()](#webSqlTracer-stopTrace) starts
-
 <a name="webSqlTracer-traceOnOpen"></a>
-[webSqlTracer.traceOnOpen(tracePredicate, traceCallback)](#webSqlTracer-traceOnOpen) starts
+[webSqlTracer.traceOnOpen(tracePredicate, traceCallback)](#webSqlTracer-traceOnOpen) starts listening to database open. When database matches *tracePredicate*, will immediately start tracing it.
+
+```js
+webSqlTracer.traceOnOpen('MyDatabase');
+
+//Somewhere later
+var db = openDatabase('MyDatabase', '1.0', 'MyDatabase', 2 * 1024 * 1024);
+//Trace is active here
+```
+
+*tracePredicate* can be a string or a function. When string, database name will be matched to it. When function, it will be called on each database open with dbName as parameter. Return true to match.
+
+```js
+webSqlTracer.traceOnOpen(function (name) { return name.indexOf("My") === 0; });
+```
+
+*traceCallback* is a way to subscribe to event of trace start. db will be provided as argument to the callback. This might be useful to stop trace for specific database.
+
+```js
+var traceDbs = [];
+webSqlTracer.traceOnOpen('MyDatabase', function (db) { traceDbs.push(db); });
+//And later on...
+webSqlTracer.stopTrace(traceDb[0]);
+```
 
 <a name="webSqlTracer-stopTraceOnOpen"></a>
-[webSqlTracer.stopTraceOnOpen()](#webSqlTracer-stopTraceOnOpen) stops
+[webSqlTracer.stopTraceOnOpen()](#webSqlTracer-stopTraceOnOpen) stops listening to database open.
+
+<a name="webSqlTracer-startTrace"></a>
+[webSqlTracer.startTrace(db, dbName, dbVersion)](#webSqlTracer-startTrace) starts trace for provided db object. *dbName* and *dbVersion* are optional parameters used to pretty-print the results.
+
+The method returns promise to indicate when trace is ready.
+
+```js
+var db = openDatabase('MyDatabase', '1.0', 'MyDatabase', 2 * 1024 * 1024);
+webSqlTracer.startTrace(db, 'MyDatabase').then(function () {
+	//we have our tracer ready here
+});
+```
+
+<a name="webSqlTracer-stopTrace"></a>
+[webSqlTracer.stopTrace(db)](#webSqlTracer-stopTrace) stops trace that was previously started with [startTrace](#webSqlTracer-startTrace).
+
 
 ## AMD
 
@@ -53,12 +86,9 @@ define(['webSqlTracer'], function (webSqlTracer) {
 }
 ``` 
 
+# Things to consider for future versions
 
-TODO
-
-# TODO
-
-- Add to cdnjs
-- Build the library with Grunt
+- Add library to cdnjs
+- Build the minified library with Grunt
 - Add tests
-- Tracing transaction start/commit/fail, with transaction ids
+- Make it visible when transaction start/commit/fail. Print transaction ids to distinguish transactions.

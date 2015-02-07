@@ -1,29 +1,31 @@
 # webSqlTrace
 Console tracer for Web SQL or SQLite. Somebody had to make one.
 
+#Table of contents
 
-## Description
+# Install
+
+Download **webSqlTracer.js** from Github [master](https://raw.githubusercontent.com/terikon/webSqlTrace/master/webSqlTracer.js).
+
+# Usage
 
 TODO
 
-## Usage
-
-TODO
-
-### Hard dependency
+## Hard dependency
 
 [jquery](http://jquery.com/download) and [underscore](http://underscorejs.org/) libraries should be loaded before webSqlTrace.
 
-### AMD
+## AMD
 
 WebSqlTrace can be used with [requirejs](http://requirejs.org/).
 
-## Demo
+# Demo
 
 TODO
 
-## TODO
+# TODO
 
-- Build the libraty with Grunt
+- Add to cdnjs
+- Build the library with Grunt
 - Add tests
 - Tracing transaction start/commit/fail, with transaction ids

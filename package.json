@@ -12,7 +12,10 @@
   },
   "keywords": [
     "websql",
-    "sqlite"
+    "sqlite",
+	"trace",
+	"debug",
+	"sql"
   ],
   "author": {
 	"name": "Terikon Software",

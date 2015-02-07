@@ -1,7 +1,7 @@
 # Web SQL Tracer
 Console tracer for Web SQL or SQLite. Somebody had to make one.
 
-If your web project uses SQL in some form, tracing functionality might be helpful for you. webSqlTracer provides means to see SQL commands that your project runs printed in console, just like this:
+If your web project uses SQL in some form, tracing functionality might be helpful to you. webSqlTracer provides means to see SQL commands that your project runs printed in console, just like this:
 
 ```js
 //Somewhere deep in your program

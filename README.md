@@ -27,14 +27,19 @@ We found it very useful to work with [JayData data access library](http://jaydat
 	- [startTrace()](#webSqlTracer-startTrace)
 	- [stopTrace()](#webSqlTracer-stopTrace)
 - [AMD](#amd)
+- [Node module](#node-module)
 - [Things to consider for future versions](#things-to-consider-for-future-versions)
 - [Contribute](#contribute)
 
 # Install
 
-Download **webSqlTracer.js** from Github [master](https://raw.githubusercontent.com/terikon/webSqlTracer/master/webSqlTracer.js).
+To install with npm, you can
 
-Include it in your page.
+```
+npm install websqltracer
+```
+
+Or you can download **webSqlTracer.js** from Github [master](https://raw.githubusercontent.com/terikon/webSqlTracer/master/webSqlTracer.js), and include it in your page.
 
 webSqlTracer depends on [jquery](http://jquery.com/download) and [underscore](http://underscorejs.org/) libraries, so include them as well.
 
@@ -160,6 +165,10 @@ define(['webSqlTracer'], function (webSqlTracer) {
 	//Use webSqlTracer here
 }
 ``` 
+
+# Node module
+
+webSqlTracer can also be loaded as node.js module.
 
 # Things to consider for future versions
 

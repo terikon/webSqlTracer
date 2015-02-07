@@ -27,10 +27,56 @@ This will create global **webSqlTracer** object to start your tracer.
 
 **webSqlTracer** object is used to start and stop tracing.
 
+Let's say we have some program that accesses Web SQL, and we want to trace database access.
+
+Here's the program:
+
+```js
+//Here we initialize the database
+var db = openDatabase('MyDatabase', '1.0', 'MyDatabase', 2 * 1024 * 1024);
+
+//Here we create and fill the database
+db.transaction(function (tx) {
+    tx.executeSql('CREATE TABLE foo (id unique, text)');
+    tx.executeSql('INSERT INTO foo (id, text) VALUES (1, "hardcoded value")');
+    tx.executeSql('INSERT INTO foo (id, text) VALUES (2, ?)', ["parametrized value"]);
+});
+
+//Here we selecte values from the database
+db.transaction(function (tx) {
+    tx.executeSql('SELECT * FROM foo', [], function (tx, results) {
+        var len = results.rows.length, i;
+        for (i = 0; i < len; i++) {
+            console.log(results.rows.item(i).text);
+        }
+    });
+});
+```
+
+This is very simple example, so we just can actually see from code what SQL commands are executed. In real-world program it will be much more trickier to understand, that's where webSqlTracer comes to help.
+
+To trace our simple program, we just add one little line to its start:
+
+```js
+webSqlTracer.traceOnOpen('MyDatabase');
+```
+
+Now, when the program runs, following will be printed to the console:
+
+```
+SQL TRACE : started tracing database MyDatabase version '1.0'
+SQL TRACE MyDatabase: 'CREATE TABLE foo (id unique, text)'
+SQL TRACE MyDatabase: 'INSERT INTO foo (id, text) VALUES (1, "hardcoded value")'
+SQL TRACE MyDatabase: 'INSERT INTO foo (id, text) VALUES (2, ?)', args=["parametrized value"]
+SQL TRACE MyDatabase: 'SELECT * FROM foo'
+```
+
+It's now easy to see what's going on with database just by analyzing the console.
+
 # API
 
 <a name="webSqlTracer-traceOnOpen"></a>
-[webSqlTracer.traceOnOpen(tracePredicate, traceCallback)](#webSqlTracer-traceOnOpen) starts listening to database open. When database matches *tracePredicate*, will immediately start tracing it.
+[webSqlTracer.traceOnOpen(tracePredicate, traceCallback)](#webSqlTracer-traceOnOpen) starts trace when database opens. When database matches *tracePredicate*, will immediately start tracing it.
 
 ```js
 webSqlTracer.traceOnOpen('MyDatabase');
@@ -44,6 +90,7 @@ var db = openDatabase('MyDatabase', '1.0', 'MyDatabase', 2 * 1024 * 1024);
 
 ```js
 webSqlTracer.traceOnOpen(function (name) { return name.indexOf("My") === 0; });
+//All databases which name starts with "My" will be traced. 
 ```
 
 *traceCallback* is a way to subscribe to event of trace start. db will be provided as argument to the callback. This might be useful to stop trace for specific database.

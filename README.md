@@ -27,7 +27,7 @@ We found it very useful to work with [JayData data access library](http://jaydat
 	- [startTrace()](#webSqlTracer-startTrace)
 	- [stopTrace()](#webSqlTracer-stopTrace)
 - [AMD](#amd)
-- [Future](#things-to-consider-for-future-versions)
+- [Things to consider for future versions](#things-to-consider-for-future-versions)
 - [Contribute](#contribute)
 
 # Install

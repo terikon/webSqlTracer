@@ -1,25 +1,58 @@
-# webSqlTrace
+# webSqlTracer
 Console tracer for Web SQL or SQLite. Somebody had to make one.
 
 #Table of contents
 
+# Demo
+
+[demo](https://github.com/terikon/webSqlTracer/tree/master/demo) folder contains simple html page that uses Web SQL. webSqlTracer is used to trace what's going on. 
+
 # Install
 
-Download **webSqlTracer.js** from Github [master](https://raw.githubusercontent.com/terikon/webSqlTrace/master/webSqlTracer.js).
+Download **webSqlTracer.js** from Github [master](https://raw.githubusercontent.com/terikon/webSqlTracer/master/webSqlTracer.js).
 
-# Usage
+Include it in your page.
 
-TODO
+webSqlTracer depends on [jquery](http://jquery.com/download) and [underscore](http://underscorejs.org/) libraries, so include them as well.
 
-## Hard dependency
+```html
+<script src="jquery.min.js"></script>
+<script src="underscore-min.js"></script>
+<script src="webSqlTracer.js"></script>
+```
 
-[jquery](http://jquery.com/download) and [underscore](http://underscorejs.org/) libraries should be loaded before webSqlTrace.
+This will create global **webSqlTracer** object to start your tracer. 
+
+# Use
+
+**webSqlTracer** object is used to start and stop tracing.
+
+# API
+
+<a name="webSqlTracer-startTrace"></a>
+[webSqlTracer.startTrace(db, dbName, dbVersion)](#webSqlTracer-startTrace) starts
+
+<a name="webSqlTracer-stopTrace"></a>
+[webSqlTracer.stopTrace()](#webSqlTracer-stopTrace) starts
+
+<a name="webSqlTracer-traceOnOpen"></a>
+[webSqlTracer.traceOnOpen(tracePredicate, traceCallback)](#webSqlTracer-traceOnOpen) starts
+
+<a name="webSqlTracer-stopTraceOnOpen"></a>
+[webSqlTracer.stopTraceOnOpen()](#webSqlTracer-stopTraceOnOpen) stops
 
 ## AMD
 
-WebSqlTrace can be used with [requirejs](http://requirejs.org/).
+webSqlTracer can be used with [requirejs](http://requirejs.org/).
 
-# Demo
+'jquery' and 'underscore' libraries should be configured with requirejs. The usage is simple:
+
+```js
+define(['webSqlTracer'], function (webSqlTracer) {
+	//Use webSqlTracer here
+}
+``` 
+
 
 TODO
 

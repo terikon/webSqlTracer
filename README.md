@@ -12,9 +12,9 @@ Let's see the console
 'INSERT INTO foo (id, text) VALUES (?, ?)', args=[12, "user just typed this"]
 ```
 
-webSqlTracer can trace database access to [Web SQL](http://html5doctor.com/introducing-web-sql-databases/) databases, as well as access to [Phonegap SQLite plugin](https://github.com/brodysoft/Cordova-SQLitePlugin).
+webSqlTracer can trace database access to [Web SQL](http://html5doctor.com/introducing-web-sql-databases/), as well as access to [Phonegap SQLite plugin](https://github.com/brodysoft/Cordova-SQLitePlugin).
 
-We found it very useful to work with [JayData](http://jaydata.org/) data access library as well.
+We found it very useful to work with [JayData data access library](http://jaydata.org/) as well.
 
 #Table of contents
 
@@ -22,7 +22,7 @@ We found it very useful to work with [JayData](http://jaydata.org/) data access 
 - [Use](#use)
 - [Demo](#demo)
 - [API](#api)
-	- [traceOnOpen()](#webSqlTracer-stopTraceOnOpen)
+	- [traceOnOpen()](#webSqlTracer-traceOnOpen)
 	- [stopTraceOnOpen()](#webSqlTracer-stopTraceOnOpen)
 	- [startTrace()](#webSqlTracer-startTrace)
 	- [stopTrace()](#webSqlTracer-stopTrace)

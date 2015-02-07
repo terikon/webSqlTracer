@@ -1,11 +1,34 @@
 # webSqlTracer
 Console tracer for Web SQL or SQLite. Somebody had to make one.
 
+If your web project uses SQL in some form, tracing functionality might be helpful for you. webSqlTracer provides means to see SQL commands that your project runs printed in console, just like this:
+
+```js
+//Somewhere deep in your program
+tx.executeSql('INSERT INTO ' + tableName + ' (id, text) VALUES (?, ?)', [ id, inputValue ]);
+```
+Let's see the console
+```
+SQL TRACE MyDatabase: 'INSERT INTO foo (id, text) VALUES (?, ?)', args=[12, "user just typed this"]
+```
+
+webSqlTracer can trace database access to [Web SQL](http://html5doctor.com/introducing-web-sql-databases/) databases, as well as access to [Phonegap SQLite plugin](https://github.com/brodysoft/Cordova-SQLitePlugin).
+
+We found it very useful to work with [JayData](http://jaydata.org/) data access library as well.
+
 #Table of contents
 
-# Demo
-
-[demo](https://github.com/terikon/webSqlTracer/tree/master/demo) folder contains simple html page that uses Web SQL. webSqlTracer is used to trace what's going on. 
+- [Install](#install)
+- [Use](#use)
+- [Demo](#demo)
+- [API](#api)
+	- [traceOnOpen()](#webSqlTracer-stopTraceOnOpen)
+	- [stopTraceOnOpen()](#webSqlTracer-stopTraceOnOpen)
+	- [startTrace()](#webSqlTracer-startTrace)
+	- [stopTrace()](#webSqlTracer-stopTrace)
+- [AMD](#amd)
+- [Future](#things-to-consider-for-future-versions)
+- [Contribute](#contribute)
 
 # Install
 
@@ -73,6 +96,10 @@ SQL TRACE MyDatabase: 'SELECT * FROM foo'
 
 It's now easy to see what's going on with database just by analyzing the console.
 
+# Demo
+
+[demo](https://github.com/terikon/webSqlTracer/tree/master/demo) folder contains simple html page that uses Web SQL. webSqlTracer is used to trace what's going on, just like you've just seen.
+
 # API
 
 <a name="webSqlTracer-traceOnOpen"></a>
@@ -98,6 +125,7 @@ webSqlTracer.traceOnOpen(function (name) { return name.indexOf("My") === 0; });
 ```js
 var traceDbs = [];
 webSqlTracer.traceOnOpen('MyDatabase', function (db) { traceDbs.push(db); });
+
 //And later on...
 webSqlTracer.stopTrace(traceDb[0]);
 ```
@@ -121,7 +149,7 @@ webSqlTracer.startTrace(db, 'MyDatabase').then(function () {
 [webSqlTracer.stopTrace(db)](#webSqlTracer-stopTrace) stops trace that was previously started with [startTrace](#webSqlTracer-startTrace).
 
 
-## AMD
+# AMD
 
 webSqlTracer can be used with [requirejs](http://requirejs.org/).
 
@@ -139,3 +167,9 @@ define(['webSqlTracer'], function (webSqlTracer) {
 - Build the minified library with Grunt
 - Add tests
 - Make it visible when transaction start/commit/fail. Print transaction ids to distinguish transactions.
+
+# Contribute
+
+Use [GitHub issues](https://github.com/terikon/webSqlTracer/issues) and [Pull Requests](https://github.com/terikon/webSqlTracer/pulls).
+
+Ideas are wellcome as well :)

@@ -8,6 +8,9 @@
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
         define(['underscore', 'jquery'], factory);
+    if (typeof module !== "undefined" && module !== null && module.exports != null) {
+        // Node module.
+        module.exports.webSqlTracer = factory(require('underscore'), require('jquery'));
     } else {
         // Browser globals
         root.webSqlTracer = factory(root._, root.jQuery);

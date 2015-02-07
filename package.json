@@ -1,0 +1,31 @@
+{
+  "name": "webSqlTracer",
+  "version": "1.0.0",
+  "description": "Console tracer for Web SQL or SQLite",
+  "main": "webSqlTracer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/terikon/webSqlTracer.git"
+  },
+  "keywords": [
+    "websql",
+    "sqlite"
+  ],
+  "author": {
+	"name": "Terikon Software",
+	"email": "npm@terikon.com",
+	"url": "http://il.linkedin.com/in/romanviskin" 
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/terikon/webSqlTracer/issues"
+  },
+  "homepage": "https://github.com/terikon/webSqlTracer",
+  "dependencies": {
+	"jquery": "*",
+	"underscore": "*"
+  }
+}

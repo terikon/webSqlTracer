@@ -1,4 +1,4 @@
-# webSqlTracer
+# Web SQL Tracer
 Console tracer for Web SQL or SQLite. Somebody had to make one.
 
 If your web project uses SQL in some form, tracing functionality might be helpful for you. webSqlTracer provides means to see SQL commands that your project runs printed in console, just like this:
@@ -9,7 +9,7 @@ tx.executeSql('INSERT INTO ' + tableName + ' (id, text) VALUES (?, ?)', [ id, in
 ```
 Let's see the console
 ```
-SQL TRACE MyDatabase: 'INSERT INTO foo (id, text) VALUES (?, ?)', args=[12, "user just typed this"]
+'INSERT INTO foo (id, text) VALUES (?, ?)', args=[12, "user just typed this"]
 ```
 
 webSqlTracer can trace database access to [Web SQL](http://html5doctor.com/introducing-web-sql-databases/) databases, as well as access to [Phonegap SQLite plugin](https://github.com/brodysoft/Cordova-SQLitePlugin).

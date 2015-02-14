@@ -1,14 +1,15 @@
-'use strict';
+/* global define,module,require */
 
 //Prints all webSQL and SQLite plugin queries to console.
 //Influenced by WebSQL documentation found here: http://www.w3.org/TR/webdatabase/
 //Uses https://github.com/umdjs/umd/blob/master/amdWeb.js to make it useful from browser globals as well as from AMD.
-//Version 1.0.0.
+//Version 1.0.1.
 (function (root, factory) {
+	'use strict';
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
         define(['underscore', 'jquery'], factory.bind(null, root));
-	} else if (typeof module !== "undefined" && module !== null && module.exports != null) {
+	} else if (typeof module !== "undefined" && module !== null && module.exports != null) { // jshint ignore:line
         // Node module.
         module.exports.webSqlTracer = factory(root, require('underscore'), require('jquery'));
     } else {
@@ -18,7 +19,8 @@
 }(this,
     //TODO: make it configurable to trace per table.
     function (root, _, $) {
-
+		'use strict';
+		
         var originalExecuteSql,
             originalTransaction,
             originalReadTransaction,
@@ -63,7 +65,7 @@
                     }
 
                     return db;
-                }
+                };
             },
 
             stopTraceOnOpen: function () {
@@ -149,8 +151,8 @@
 
                                 callback(t); //Execute original callback parameter of transaction method.
                             }, errorCallback, successCallback);
-                        }
-                    }
+                        };
+                    };
 
                     protoDatabase.transaction = makeTransaction(originalTransaction);
                     protoDatabase.readTransaction = makeTransaction(originalReadTransaction);

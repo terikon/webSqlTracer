@@ -179,10 +179,15 @@ var webSqlTracer = require('websqltracer');
 - Add library to cdnjs
 - Build the minified library with Grunt
 - Add tests
-- Make it visible when transaction start/commit/fail. Print transaction ids to distinguish transactions.
+- Make it visible when transaction start/commit/fail. Print transaction ids to distinguish between transactions
+- Add profiling information (how much time the query runs)
 
 # Contribute
 
 Use [GitHub issues](https://github.com/terikon/webSqlTracer/issues) and [Pull Requests](https://github.com/terikon/webSqlTracer/pulls).
 
 Ideas are wellcome as well :)
+
+Before comitting, please run jshint:
+
+	npm run jshint

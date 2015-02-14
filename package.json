@@ -1,7 +1,7 @@
 {
   "name": "websqltracer",
   "title": "webSqlTracer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Console tracer for Web SQL or SQLite",
   "main": "webSqlTracer.js",
   "scripts": {

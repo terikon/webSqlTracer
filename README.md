@@ -39,14 +39,17 @@ To install with npm, you can
 npm install websqltracer
 ```
 
-Or you can download **webSqlTracer.js** from Github [master](https://raw.githubusercontent.com/terikon/webSqlTracer/master/webSqlTracer.js), and include it in your page.
+Or you can download **webSqlTracer.js**
+[minified](https://raw.githubusercontent.com/terikon/webSqlTracer/master/dist/webSqlTracer.min.js) or
+[source](https://raw.githubusercontent.com/terikon/webSqlTracer/master/webSqlTracer.js)
+from Github, and include it in your page.
 
 webSqlTracer depends on [jquery](http://jquery.com/download) and [underscore](http://underscorejs.org/) libraries, so include them as well.
 
 ```html
 <script src="jquery.min.js"></script>
 <script src="underscore-min.js"></script>
-<script src="webSqlTracer.js"></script>
+<script src="webSqlTracer.min.js"></script>
 ```
 
 This will create global **webSqlTracer** object to start your tracer. 
@@ -187,6 +190,10 @@ var webSqlTracer = require('websqltracer');
 Use [GitHub issues](https://github.com/terikon/webSqlTracer/issues) and [Pull Requests](https://github.com/terikon/webSqlTracer/pulls).
 
 Ideas are wellcome as well :)
+
+To build:
+	
+	npm run build
 
 Before comitting, please run jshint:
 

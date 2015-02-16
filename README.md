@@ -180,7 +180,7 @@ var webSqlTracer = require('websqltracer');
 # Things to consider for future versions
 
 - Add library to cdnjs
-- Build the minified library with Grunt
+- ~~Build the minified library with Grunt~~
 - Add tests
 - Make it visible when transaction start/commit/fail. Print transaction ids to distinguish between transactions
 - Add profiling information (how much time the query runs)

@@ -47,12 +47,24 @@ from Github, and include it in your page.
 webSqlTracer depends on [jquery](http://jquery.com/download) and [underscore](http://underscorejs.org/) libraries, so include them as well.
 
 ```html
+<!-- Dependencies -->
 <script src="jquery.min.js"></script>
 <script src="underscore-min.js"></script>
+<!-- The webSqlTracer library itself -->
 <script src="webSqlTracer.min.js"></script>
 ```
 
-This will create global **webSqlTracer** object to start your tracer. 
+This will create global **webSqlTracer** object to start your tracer.
+
+You can include webSqlTracer to your page with **CDN**:
+
+```html
+<!-- Dependencies -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.1/underscore-min.js"></script>
+<!-- The webSqlTracer library itself -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/websqltracer/1.0.1/webSqlTracer.min.js"></script>
+``` 
 
 # Use
 
@@ -179,7 +191,7 @@ var webSqlTracer = require('websqltracer');
 
 # Things to consider for future versions
 
-- Add library to cdnjs
+- ~~Add library to cdnjs~~
 - ~~Build the minified library with Grunt~~
 - Add tests
 - Make it visible when transaction start/commit/fail. Print transaction ids to distinguish between transactions

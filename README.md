@@ -201,12 +201,12 @@ var webSqlTracer = require('websqltracer');
 
 Use [GitHub issues](https://github.com/terikon/webSqlTracer/issues) and [Pull Requests](https://github.com/terikon/webSqlTracer/pulls).
 
-Ideas are wellcome as well :)
+Ideas are welcome as well :)
 
 To build:
 	
 	npm run build
 
-Before comitting, please run jshint:
+Before committing, please run jshint:
 
 	npm run jshint

@@ -1,0 +1,41 @@
+{
+  "name": "websqltracer",
+  "main": "webSqlTracer.js",
+  "version": "1.0.1",
+  "description": "Console tracer for Web SQL or SQLite",
+  
+  "homepage": "https://github.com/terikon/webSqlTracer",
+  "authors": [
+	{ "name": "Terikon Software", "email": "npm@terikon.com", "homepage": "http://il.linkedin.com/in/romanviskin" }
+  ],
+  
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/terikon/webSqlTracer.git"
+  },
+  
+  "keywords": [
+    "websql",
+    "sqlite",
+	"trace",
+	"debug",
+	"sql",
+	"profiler"
+  ],
+  
+  "license": "MIT",
+  
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "tests"
+  ]
+  
+}

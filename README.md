@@ -34,9 +34,13 @@ We found it very useful to work with [JayData data access library](http://jaydat
 # Install
 
 To install with npm, you can
-
 ```
 npm install websqltracer
+```
+
+To install with bower,
+```
+bower install websqltracer
 ```
 
 Or you can download **webSqlTracer.js**

@@ -1,7 +1,7 @@
 {
   "name": "websqltracer",
   "main": "webSqlTracer.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Console tracer for Web SQL or SQLite",
   
   "homepage": "https://github.com/terikon/webSqlTracer",

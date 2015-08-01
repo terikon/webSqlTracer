@@ -1,7 +1,7 @@
 {
   "name": "websqltracer",
   "title": "webSqlTracer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Console tracer for Web SQL or SQLite",
   "main": "webSqlTracer.js",
   "scripts": {
@@ -23,7 +23,7 @@
 	"profiler"
   ],
   "author": {
-	"name": "Terikon Software",
+	"name": "Terikon Apps",
 	"email": "npm@terikon.com",
 	"url": "http://il.linkedin.com/in/romanviskin" 
   },
